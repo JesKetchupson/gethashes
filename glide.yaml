@@ -1,0 +1,11 @@
+package: github.com/gethashes
+import:
+- package: github.com/gomodule/redigo
+  subpackages:
+  - redis
+- package: github.com/gorilla/mux
+- package: github.com/gorilla/websocket
+- package: github.com/joho/godotenv
+- package: golang.org/x/crypto
+  subpackages:
+  - sha3
