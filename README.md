@@ -12,4 +12,6 @@
 ## Run client
 ``go run client.go``
 ### Then you can use console util gethashs
-``go run gethashs.go``
+example ``go run gethashs.go 123456 2``
+123456 - number to hash 
+2 - how many times it will be changed and hased
