@@ -23,11 +23,12 @@ func init() {
 		log.Fatal("Error loading .env file")
 	}
 }
-//Redis connection
+
 
 
 func main() {
-	var cli, err = redis.Dial("tcp",":"+os.Getenv("REDIS_PORT"))
+	//Redis connection
+	cli, err := redis.Dial("tcp",":"+os.Getenv("REDIS_PORT"))
 	if err != nil {
 		// handle error
 		panic(err)
