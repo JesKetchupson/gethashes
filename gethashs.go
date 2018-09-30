@@ -51,15 +51,16 @@ func main() {
 
 // SendToRedis function sends number and hash to redis N times
 func sendToRedis(num string, times int,cli redis.Conn) {
-	//generating hash for N times
+	//generating hash N times
 	for i:=0;i<times;i++{
-		HSum := regenerateHash(num)
+		HSum := generateHash(num)
 	h := hashed{
 		Number: num,
 		Hash:   string(HSum),
 	}
 	json, _ := json.Marshal(h)
 	cli.Do("LPUSH", os.Getenv("LIST"), json)
+	//after push generate new number and repeat
 	num = regenerateNumber(num)
 	}
 }
@@ -77,7 +78,7 @@ func regenerateNumber(num string) string {
 }
 
 // regenerateHash regenerates given hash with sha3 algorithm
-func regenerateHash(num string) []byte {
+func generateHash(num string) []byte {
 	hash := sha3.New512()
 	hash.Write([]byte(num))
 	HSum := hash.Sum(nil)
